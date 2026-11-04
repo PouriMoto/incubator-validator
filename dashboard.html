@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>داشبورد پذیرش مرکز رشد — hormat-studio</title>
+<meta name="description" content="ویزارد تکمیل کاربرگ پذیرش مرکز رشد پارک علم و فناوری هرمزگان، با پرامپت‌ساز برای هوش مصنوعی و خروجی پاورپوینت">
+<link rel="stylesheet" href="Assets/css/theme.css">
+</head>
+<body>
+<header class="hero"><div class="hero-in">
+  <div class="logo" aria-hidden="true">🏛</div>
+  <div><h1>داشبورد پذیرش مرکز رشد</h1><p>پارک علم و فناوری هرمزگان · ویزارد کاربرگ · مشاور AI · خروجی پاورپوینت</p></div>
+  <div class="sp"></div>
+  <span id="saved" class="hbtn" style="cursor:default" aria-live="polite">✓ ذخیره شد</span>
+  <button class="hbtn" id="fsBtn" title="اتصال به پوشهٔ پروژه تا فایل‌ها خودکار در مسیر درست ذخیره شوند">📁 اتصال به پوشهٔ پروژه</button>
+  <a class="hbtn" href="bmc.html" target="_blank" rel="noopener">🧩 BMC</a>
+  <button class="hbtn" id="apiBtn" title="اتصال به API هوش مصنوعی (اختیاری)">⚙️ API</button>
+  <button class="hbtn" id="themeBtn" aria-label="تغییر تم">🌙</button>
+</div></header>
+
+<nav class="tabs"><div class="tabbar" role="tablist">
+  <button class="tab" data-view="guide" role="tab">📘 <span class="tx">راهنمای مبتدی</span></button>
+  <button class="tab on" data-view="wizard" role="tab">🧭 <span class="tx">ویزارد پر کردن</span></button>
+  <button class="tab" data-view="export" role="tab">🚀 <span class="tx">خروجی و پاورپوینت</span></button>
+</div></nav>
+
+<main class="main">
+
+<!-- ============ راهنما ============ -->
+<section class="view" id="v_guide">
+  <div class="card" style="background:linear-gradient(135deg,var(--tint),var(--card))">
+    <h2 style="margin:0 0 6px">سلام! برای اولین بار می‌خواهید ایده‌تان را به مرکز رشد ارائه دهید؟</h2>
+    <p style="margin:0 0 12px;color:var(--ink2)">این صفحه همه‌چیز را ساده می‌کند: <b>چه کسی چه می‌خواهد، چه مدارکی لازم است، هر قسمت کاربرگ را چطور پر کنید</b> و چطور با کمک هوش مصنوعی متن‌ها را بهتر کنید. لازم نیست متخصص باشید؛ فقط مرحله‌به‌مرحله جلو بروید.</p>
+    <div class="btns"><button class="btn" data-start="0">🚀 شروع پر کردن</button><a class="btn sec" href="bmc.html" target="_blank" rel="noopener">🧩 اول BMC را پر می‌کنم</a></div>
+  </div>
+
+  <div class="sec-t">چهار قدم تا ارائه</div>
+  <div class="gh">
+    <div class="gc"><h3>۱) پوشهٔ پروژه</h3><p>یک پوشه بسازید و تصاویر محصول و مدارک تیم را همان‌جا نگه دارید. داشبورد مسیرها را خودکار از روی <b>نام هر نفر</b> می‌سازد (مثل <code>Assets/team/ali-rezaei/photo.jpg</code>).</p></div>
+    <div class="gc"><h3>۲) BMC و ایده</h3><p>بوم مدل کسب‌وکار در ۹ کادر، ایده را منسجم می‌کند. بعد از آن پر کردن مشکل، مشتری، درآمد و … خیلی سریع‌تر است.</p></div>
+    <div class="gc"><h3>۳) ویزارد + مشاور AI</h3><p>هر مرحله = یک بخش کاربرگ. زیر هر فیلد «؟ راهنما» دارد. دکمهٔ «کپی برای AI» پرامپت آمادهٔ همان مرحله را می‌دهد.</p></div>
+    <div class="gc"><h3>۴) خروجی</h3><p>پاورپوینت ارائه، کاربرگ برای Word، BMC به PDF و فهرست مدارک. همه از همان داده‌ها ساخته می‌شود.</p></div>
+  </div>
+
+  <div class="sec-t">فرایند پذیرش در مرکز رشد (طبق اینفوگرافیک پارک)</div>
+  <p style="color:var(--mut);margin:-4px 0 10px;font-size:.88rem">ردیف‌های زردرنگ، کارهایی است که <b>شما</b> انجام می‌دهید. زمان‌ها «روز کاری» است.</p>
+  <div class="tl" id="tl"></div>
+
+  <div class="sec-t">شرایط پذیرش و مدارک</div>
+  <div class="gh">
+    <div class="gc"><h3>شرایط پذیرش</h3><ul><li>ایدهٔ نوآورانهٔ مبتنی بر فناوری با قابلیت تجاری‌سازی</li><li>تیم با حداقل یک نیروی کارشناس</li><li>اقامت در استان هرمزگان</li><li>استقرار در پارک علم و فناوری در صورت پذیرش</li></ul></div>
+    <div class="gc"><h3>مدارکی که باید آماده کنید</h3><div class="chk" id="chkList" style="margin-top:6px"></div></div>
+  </div>
+
+  <div class="sec-t">چطور با هوش مصنوعی کار کنم؟</div>
+  <div class="gh">
+    <div class="gc"><h3>روش اصلی: کپی برای AI</h3><ol><li>در هر مرحله «کپی برای AI» را بزنید.</li><li>در ChatGPT / Claude / Gemini / … بچسبانید.</li><li>به پرسش‌های مشاور پاسخ دهید و در پایان بنویسید «نهایی».</li><li>بلاک JSON پاسخ را برگردانید و در کادر پایین صفحه بچسبانید ← «اعمال».</li></ol></div>
+    <div class="gc"><h3>دو حالت پرامپت</h3><p><b>مصاحبه‌ای:</b> مشاور اول سؤال می‌پرسد (برای وقتی که هنوز چیزی ننوشته‌اید).<br><b>بازنویسی فوری:</b> متن شما را فوراً بهتر می‌کند.</p></div>
+    <div class="gc"><h3>اتصال مستقیم (اختیاری)</h3><p>اگر کلید API سازگار با OpenAI دارید، از ⚙️ بالای صفحه آدرس و کلید را وارد کنید تا گفتگو همین‌جا انجام شود. بدون API هم همهٔ امکانات کار می‌کند.</p></div>
+    <div class="gc"><h3>حریم خصوصی</h3><p>کد ملی، تلفن، ایمیل، آدرس و مدارک هویتی <b>هرگز</b> در پرامپت نمی‌آیند. اعداد و ادعاهای AI را همیشه خودتان بررسی کنید؛ AI ممکن است خطا یا اطلاعات ساختگی بدهد.</p></div>
+  </div>
+
+  <div class="sec-t">نوشتن خوب در برابر نوشتن ضعیف</div>
+  <div class="gh">
+    <div class="gc"><h3>مشکل</h3><div class="gd"><div class="bad">✗ «مردم برای انجام کارها مشکل دارند.»</div><div class="good">✓ «صاحبان کارگاه‌های کوچک ماهانه ~۱۰ ساعت صرف ثبت دستی سفارش می‌کنند و ۱۵٪ سفارش‌ها را از دست می‌دهند.»</div></div></div>
+    <div class="gc"><h3>ارزش پیشنهادی</h3><div class="gd"><div class="bad">✗ «بهترین و کامل‌ترین پلتفرم کشور.»</div><div class="good">✓ «ثبت سفارش از ۱۰ دقیقه به ۳۰ ثانیه، بدون نصب برنامه.»</div></div></div>
+    <div class="gc"><h3>بازار</h3><div class="gd"><div class="bad">✗ «همهٔ مردم مشتری ما هستند.»</div><div class="good">✓ «۱۵ هزار کسب‌وکار فعال در هرمزگان؛ هدف سال اول: ۳۰۰ مشتری.»</div></div></div>
+    <div class="gc"><h3>رقبا</h3><div class="gd"><div class="bad">✗ «رقیب نداریم.»</div><div class="good">✓ «رقیب مستقیم: X و Y؛ غیرمستقیم: اکسل و دفتر کاغذی. مزیت ما: …»</div></div></div>
+  </div>
+
+  <div class="sec-t">واژه‌نامهٔ ساده</div>
+  <div>
+    <details class="acc"><summary>هسته فناوری</summary><div class="in">تیم و ایده‌ای که هنوز شرکت ثبت‌شده نیست و در مرکز رشد پرورش می‌یابد. «نام هسته» نام پیشنهادی شرکت آیندهٔ شماست.</div></details>
+    <details class="acc"><summary>مرکز رشد و دفتر تجاری‌سازی</summary><div class="in">مرکز رشد با فضا، آموزش و مشاوره از هسته‌ها حمایت می‌کند. دفتر تجاری‌سازی کاربرگ شما را بررسی و کامنت‌گذاری می‌کند تا طرح برای داوری آماده شود.</div></details>
+    <details class="acc"><summary>نمونهٔ اولیه (Prototype) و MVP</summary><div class="in">نمونهٔ اولیه ساده‌ترین نسخه برای نشان‌دادن ایده است. MVP نسخه‌ای است که واقعاً توسط چند کاربر آزمایش می‌شود و یاد می‌گیرید چه چیزی کار می‌کند.</div></details>
+    <details class="acc"><summary>BMC یا بوم مدل کسب‌وکار</summary><div class="in">یک صفحه با ۹ کادر که نشان می‌دهد مشتری کیست، چه ارزشی می‌گیرد، چگونه به او می‌رسید، از کجا درآمد دارید و چه هزینه‌هایی دارید.</div></details>
+    <details class="acc"><summary>پذیرندگان آغازین (Early adopters)</summary><div class="in">اولین مشتریانی که حاضرند با وجود نقص‌ها محصول را امتحان کنند. اسم‌شان را بدانید؛ «همه» جواب نیست.</div></details>
+    <details class="acc"><summary>TAM / SAM / SOM</summary><div class="in">TAM: کل بازار. SAM: بخشی که واقعاً می‌توانید خدمت دهید. SOM: سهمی که در ۱ تا ۲ سال واقع‌بینانه می‌گیرید. هرچه به SOM نزدیک‌تر، باورپذیرتر.</div></details>
+    <details class="acc"><summary>هزینهٔ سرمایه‌ای و جاری (CAPEX / OPEX)</summary><div class="in">سرمایه‌ای: یک‌بار برای ساخت (تجهیزات، نمونه، ثبت شرکت). جاری: تکرارشونده (حقوق، سرور، تبلیغ).</div></details>
+    <details class="acc"><summary>نقطهٔ سربه‌سر</summary><div class="in">مقدار فروشی که درآمد برابر هزینه می‌شود. محاسبهٔ ساده‌اش: هزینهٔ ثابت ÷ (قیمت − هزینهٔ متغیر هر واحد).</div></details>
+    <details class="acc"><summary>Pitch و Ask</summary><div class="in">Pitch ارائهٔ کوتاه و متقاعدکننده است. Ask خواستهٔ مشخص شما از داوران: مثلاً «پذیرش در دورهٔ رشد مقدماتی و اتصال به ۳ مشتری آزمایشی».</div></details>
+  </div>
+
+  <div class="sec-t">نکات ارائه در جلسهٔ پذیرش</div>
+  <div class="gh">
+    <div class="gc"><ul><li>هر اسلاید فقط یک پیام. متن کم، تصویر و عدد بیشتر.</li><li>۷ تا ۱۰ دقیقه صحبت؛ ۵ دقیقه آمادهٔ پرسش و پاسخ باشید.</li><li>با مشکل شروع کنید، نه با خودتان.</li></ul></div>
+    <div class="gc"><ul><li>ریسک‌ها را صادقانه بگویید؛ داوران شفافیت را دوست دارند.</li><li>پایان با خواستهٔ مشخص (Ask).</li><li>سه بار با صدای بلند تمرین کنید؛ از پرامپت «سناریوی ارائه» در بخش خروجی کمک بگیرید.</li></ul></div>
+  </div>
+
+  <div class="sec-t">لینک‌های کمکی برای آماده‌شدن</div>
+  <p style="color:var(--mut);margin:-4px 0 10px;font-size:.85rem">لینک‌ها در زمان ساخت بررسی شد؛ ممکن است سایت‌ها تغییر کنند. ویدیوهای فارسی را با «جستجو» پیدا کنید.</p>
+  <div class="links">
+    <a class="lk" href="https://hmstp.ir" target="_blank" rel="noopener"><span class="e">🏛</span><span><b>سایت پارک علم و فناوری هرمزگان</b><small>فایل خام کاربرگ، اخبار و تماس با مرکز رشد (همان آدرس ذکرشده در کاربرگ)</small></span></a>
+    <a class="lk" href="https://virgool.io/@manuelohan" target="_blank" rel="noopener"><span class="e">✍️</span><span><b>مانوئل اوهانجانیانس — ویرگول</b><small>یادداشت‌های مؤسس ایسمینار دربارهٔ تجربهٔ استارتاپ‌سازی در ایران</small></span></a>
+    <a class="lk" href="https://www.aparat.com/search/%D9%85%D8%A7%D9%86%D9%88%D8%A6%D9%84%20%D8%A7%D9%88%D9%87%D8%A7%D9%86%D8%AC%D8%A7%D9%86%DB%8C%D8%A7%D9%86%D8%B3" target="_blank" rel="noopener"><span class="e">🎬</span><span><b>ویدیوهای مانوئل اوهانجانیانس — جستجو در آپارات</b><small>سخنرانی‌ها و آموزش‌های فارسی دربارهٔ استارتاپ و کسب‌وکار</small></span></a>
+    <a class="lk" href="https://www.youtube.com/results?search_query=%D9%85%D8%A7%D9%86%D9%88%D8%A6%D9%84%20%D8%A7%D9%88%D9%87%D8%A7%D9%86%D8%AC%D8%A7%D9%86%DB%8C%D8%A7%D9%86%D8%B3" target="_blank" rel="noopener"><span class="e">▶️</span><span><b>همین موضوع — جستجو در یوتیوب</b><small>سخنرانی‌ها و مصاحبه‌ها</small></span></a>
+    <a class="lk" href="https://www.zoomit.ir/business/155550-business-model-canvas/" target="_blank" rel="noopener"><span class="e">📰</span><span><b>طراحی و پیاده‌سازی بوم مدل کسب‌وکار — زومیت</b><small>مقالهٔ فارسی مرحله‌به‌مرحله</small></span></a>
+    <a class="lk" href="https://www.zarinpal.com/blog/%D8%A8%D9%88%D9%85-%D9%85%D8%AF%D9%84-%DA%A9%D8%B3%D8%A8-%D9%88-%DA%A9%D8%A7%D8%B1-%DA%86%DB%8C%D8%B3%D8%AA/" target="_blank" rel="noopener"><span class="e">📰</span><span><b>بوم مدل کسب‌وکار چیست؟ — وبلاگ زرین‌پال</b><small>معرفی ۹ بخش با مثال</small></span></a>
+    <a class="lk" href="https://www.melipayamak.com/blog/posts/business-model-canvas-guide-for-startups/" target="_blank" rel="noopener"><span class="e">📰</span><span><b>آموزش تکمیل ۹ بخش BMC — ملی‌پیامک</b><small>راهنمای کاربردی برای استارتاپ‌ها</small></span></a>
+    <a class="lk" href="https://maktabkhooneh.org/learn/business-planning-modeling" target="_blank" rel="noopener"><span class="e">🎓</span><span><b>برنامه‌ریزی و مدل‌سازی کسب‌وکار — مکتب‌خونه</b><small>دورهٔ آموزشی فارسی</small></span></a>
+    <a class="lk" href="https://www.strategyzer.com/blog/imd-business-school-a-short-video-series-on-the-business-model-canvas" target="_blank" rel="noopener"><span class="e">🎥</span><span><b>Business Model Canvas — ویدیوهای کوتاه (Osterwalder)</b><small>انگلیسی؛ معرفی BMC و اشتباهات رایج. خالق BMC</small></span></a>
+    <a class="lk" href="https://cloud.substack.com/p/the-y-combinator-guide-to-perfectly" target="_blank" rel="noopener"><span class="e">🎤</span><span><b>راهنمای Y Combinator برای Pitch</b><small>انگلیسی؛ خلاصهٔ سخنرانی Michael Seibel دربارهٔ ارائهٔ مرحلهٔ اولیه</small></span></a>
+    <a class="lk" href="https://www.youtube.com/watch?v=lw2X3PxKlAY" target="_blank" rel="noopener"><span class="e">▶️</span><span><b>ویدیوی اصلی Pitch (طبق مقالهٔ بالا)</b><small>انگلیسی؛ قبل از دیدن زیرنویس را فعال کنید</small></span></a>
+    <a class="lk" href="https://ycombinator.com/library/Io-how-to-build-an-mvp" target="_blank" rel="noopener"><span class="e">🛠</span><span><b>چطور MVP بسازیم — Y Combinator</b><small>انگلیسی؛ ساخت سریع اولین نسخه</small></span></a>
+  </div>
+  <p style="margin:26px 0 0;text-align:center;color:var(--mut);font-size:.82rem">تنظیم‌شده توسط پوریا همایی · @pouriabh1997</p>
+</section>
+
+<!-- ============ ویزارد ============ -->
+<section class="view on" id="v_wizard">
+  <div class="wz"><aside class="side" id="side" aria-label="مراحل"></aside><div id="stepHost"></div></div>
+</section>
+<section class="view" id="v_export"></section>
+</main>
+
+<script src="Assets/js/vendor/pptxgen.bundle.js"></script>
+<script src="Assets/js/core.js"></script>
+<script src="Assets/js/schema.js"></script>
+<script src="Assets/js/prompts.js"></script>
+<script src="Assets/js/sample.js"></script>
+<script src="Assets/js/deck.js"></script>
+<script src="Assets/js/app.js"></script>
+</body>
+</html>

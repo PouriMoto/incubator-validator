@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>بوم مدل کسب‌وکار (BMC) — hormat-studio</title>
+<link rel="stylesheet" href="Assets/css/theme.css">
+<style>
+.canvas{display:grid;grid-template-columns:repeat(5,1fr);grid-template-rows:auto auto auto;gap:10px}
+.bk{background:var(--card);border:1.5px solid var(--line);border-radius:18px;padding:12px;display:flex;flex-direction:column;box-shadow:var(--sh)}
+.bk:focus-within{border-color:var(--p)}
+.bk h3{flex-wrap:wrap;margin:0 0 4px;font-size:.92rem;display:flex;gap:6px;align-items:center}
+.bk textarea{flex:1;min-height:150px;font-size:.84rem;padding:.5rem .65rem;border-radius:11px}
+.bk.value{background:linear-gradient(180deg,var(--tint),var(--card));border-color:var(--p)}
+.bk[data-b=partners]{grid-column:1;grid-row:1/3}.bk[data-b=activities]{grid-column:2;grid-row:1}.bk[data-b=resources]{grid-column:2;grid-row:2}
+.bk[data-b=value]{grid-column:3;grid-row:1/3}.bk[data-b=relations]{grid-column:4;grid-row:1}.bk[data-b=channels]{grid-column:4;grid-row:2}
+.bk[data-b=segments]{grid-column:5;grid-row:1/3}.bk[data-b=costs]{grid-column:1/4;grid-row:3}.bk[data-b=revenue]{grid-column:4/6;grid-row:3}
+.bk[data-b=partners] textarea,.bk[data-b=value] textarea,.bk[data-b=segments] textarea{min-height:320px}
+.bk .help{font-size:.78rem;padding:7px 10px}
+@media(max-width:980px){.canvas{grid-template-columns:1fr 1fr}.bk{grid-column:auto!important;grid-row:auto!important}.bk textarea{min-height:130px!important}}
+@media(max-width:560px){.canvas{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header class="hero"><div class="hero-in">
+  <div class="logo" aria-hidden="true">🧩</div>
+  <div><h1>بوم مدل کسب‌وکار (BMC)</h1><p>۹ کادر برای روشن‌کردن ایده · مشاور AI · خروجی PDF و پرامپت برای داشبورد اصلی</p></div>
+  <div class="sp"></div>
+  <span id="saved" class="hbtn" style="cursor:default">✓ ذخیره شد</span>
+  <a class="hbtn" href="dashboard.html">← داشبورد اصلی</a>
+  <button class="hbtn" id="apiBtn">⚙️ API</button>
+  <button class="hbtn" id="themeBtn" aria-label="تغییر تم">🌙</button>
+</div></header>
+
+<main class="main" style="margin-top:-46px;position:relative;z-index:3">
+  <div class="card">
+    <div class="g2">
+      <div class="f"><label>نام پروژه / هسته <span class="req">*</span></label><input type="text" id="bName" placeholder="hormat-studio"></div>
+      <div class="f"><label>عنوان ایده (اختیاری)</label><input type="text" id="bSub" placeholder="عنوان فارسی ایده"></div>
+    </div>
+    <details class="acc" style="margin:0"><summary>📘 راهنمای ۳۰ ثانیه‌ای BMC</summary><div class="in">
+      بوم مدل کسب‌وکار یک صفحه است با ۹ کادر. <b>از وسط شروع کنید:</b> ۱) «بخش‌های مشتری» ← ۲) «ارزش پیشنهادی» ← ۳) «کانال‌ها» و «ارتباط با مشتری» ← ۴) «جریان‌های درآمد» ← ۵) «منابع»، «فعالیت‌ها» و «شرکا» ← ۶) «ساختار هزینه‌ها». هر کادر چند خط کوتاه (نه متن بلند). زیر هر کادر دکمهٔ «؟ راهنما» مثال دارد.<br>
+      برای مطالعه: <a href="https://www.zarinpal.com/blog/%D8%A8%D9%88%D9%85-%D9%85%D8%AF%D9%84-%DA%A9%D8%B3%D8%A8-%D9%88-%DA%A9%D8%A7%D8%B1-%DA%86%DB%8C%D8%B3%D8%AA/" target="_blank" rel="noopener">مقالهٔ فارسی زرین‌پال</a> · <a href="https://www.strategyzer.com/blog/imd-business-school-a-short-video-series-on-the-business-model-canvas" target="_blank" rel="noopener">ویدیوهای Osterwalder (انگلیسی)</a></div></details>
+  </div>
+  <div style="height:12px"></div>
+  <div class="canvas" id="canvas"></div>
+
+  <section class="ai" id="ai" style="margin-top:14px"><h3>🤖 مشاور AI برای BMC</h3>
+    <p class="d">دو کار: (۱) بهتر کردن/پر کردن همین بوم، (۲) ساخت پرامپتی که از روی این بوم، فیلدهای <b>داشبورد اصلی</b> را پر می‌کند.</p>
+    <div class="seg"><button class="on" data-m="interview">🗣 مصاحبه‌ای</button><button data-m="draft">⚡ بازنویسی فوری</button></div>
+    <textarea id="aiNote" rows="2" placeholder="توضیح اضافه برای مشاور (اختیاری): مثلاً ایده‌ام این است که…"></textarea>
+    <div class="btns"><button class="btn" id="bCopy">📋 کپی برای AI (تکمیل BMC)</button><button class="btn amber" id="bSend">⚡ ارسال با API</button><button class="btn sec" id="bMain">➡️ پرامپت پر کردن داشبورد اصلی</button></div>
+    <div class="pv" id="pv" hidden></div><div class="chat" id="chat"></div>
+    <div id="rbox" hidden><textarea id="aiReply" rows="2" placeholder="پاسخ شما به مشاور…"></textarea><div class="btns"><button class="btn sm" id="bReply">ارسال پاسخ</button><button class="btn sm sec" id="bFinal">نهایی — JSON بده</button></div></div>
+    <div class="f" style="margin:12px 0 0"><label>📥 پاسخ AI (حاوی JSON) را اینجا بچسبانید</label><textarea id="aiPaste" rows="3" dir="ltr" placeholder='{ "segments": "...", "value": "..." }'></textarea>
+    <div class="btns"><button class="btn sm" data-r="0" id="bAp0">اعمال روی کادرهای خالی</button><button class="btn sm sec" data-r="1" id="bAp1">اعمال و جایگزینی</button></div></div>
+  </section>
+
+  <div class="card" style="margin-top:14px"><h3 style="margin:0 0 8px">خروجی</h3>
+    <div class="btns"><button class="btn" id="bPdf">🖨 دانلود PDF (چاپ به PDF)</button><button class="btn sec" id="bJson">💾 ذخیره bmc.json</button><button class="btn sec" id="bLoad">📥 وارد کردن bmc.json</button><button class="btn sec" id="bSync">🔗 ارسال به داشبورد (همین مرورگر)</button><button class="btn ghost" id="bClear" style="color:#e11d48">پاک‌کردن</button></div>
+    <p style="color:var(--mut);font-size:.82rem;margin:6px 0 0">PDF را در پوشهٔ <code>Assets/docs/bmc.pdf</code> بگذارید تا در فهرست ارسال پذیرش بیاید. برای انتقال به داشبورد اصلی: «bmc.json» را در مرحلهٔ «بوم مدل کسب‌وکار» وارد کنید (یا اگر هر دو صفحه در یک مرورگر باز شد، دکمهٔ «دریافت از حافظهٔ مرورگر»).</p></div>
+  <p style="margin:24px 0 0;text-align:center;color:var(--mut);font-size:.82rem">تنظیم‌شده توسط پوریا همایی · @pouriabh1997</p>
+</main>
+<script src="Assets/js/core.js"></script>
+<script src="Assets/js/bmc.js"></script>
+</body>
+</html>
